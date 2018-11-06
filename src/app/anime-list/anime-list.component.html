@@ -1,0 +1,104 @@
+<as-sortbar (currentSortOptions)="updatePage($event)"></as-sortbar>
+
+<table *ngIf="currentPage$ | async as page; else loading;" class="table table-responsive-md table-dark table-striped text-white my-2">
+  <thead>
+      <tr class="text-uppercase">
+      <th scope="col">Cover</th>
+      <th scope="col">Title</th>
+      <th scope="col">Start</th>
+      <th scope="col">End</th>
+      <th scope="col">Episodes</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Genres</th>
+      <th scope="col">More details</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="page.media.length > 0; else no_result;" class="text-light">
+    <tr *ngFor="let anime of page.media">
+      <td *ngIf="page.pageInfo.lastPage > 0; else no_result;"><img src="{{ anime.coverImage.medium }}" alt="no cover"/></td>
+      <td id="titles" class="text-left">
+        <div>{{ anime.title.romaji }}</div>
+        <div *ngIf="anime.title.english">
+          <hr class="bg-white"/>
+          {{ anime.title.english }}
+        </div>
+      </td>
+      <td>
+        <span *ngIf="anime.startDate.day">{{ anime.startDate.day | number: '2.' }}</span>
+        <span *ngIf="anime.startDate.day && anime.startDate.month">/</span>
+        <span *ngIf="anime.startDate.month">{{ anime.startDate.month | number: '2.' }}</span>
+        <span *ngIf="anime.startDate.month && this.currentSortOptions.year !== anime.startDate.year">/</span>
+        <span *ngIf="anime.startDate.year && this.currentSortOptions.year !== anime.startDate.year">{{ anime.startDate.year }}</span>
+        <i *ngIf="!anime.startDate.year" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
+      </td>
+      <td>
+        <span *ngIf="anime.endDate.day">{{ anime.endDate.day  | number: '2.' }}</span>
+        <span *ngIf="anime.endDate.day && anime.endDate.month">/</span>
+        <span *ngIf="anime.endDate.month">{{ anime.endDate.month | number: '2.' }}</span>
+        <span *ngIf="anime.endDate.month && this.currentSortOptions.year !== anime.endDate.year">/</span>
+        <span *ngIf="anime.endDate.year && this.currentSortOptions.year !== anime.endDate.year">{{ anime.endDate.year }}</span>
+        <i *ngIf="!anime.endDate.year" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
+      </td>
+      <td>
+        <div *ngIf="anime.nextAiringEpisode && this.currentSortOptions.status === 'RELEASING'">Last: {{ anime.nextAiringEpisode.episode }}</div>
+        <hr *ngIf="anime.nextAiringEpisode && this.currentSortOptions.status === 'RELEASING'" class="bg-white"/>
+        <div *ngIf="anime.episodes">T: {{ anime.episodes }}</div>
+        <i *ngIf="!anime.episodes" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
+      </td>
+      <td>
+        <div *ngIf="anime.duration">
+          <div>
+            <div *ngIf="anime.duration/60 >= 1">Ep &cong; {{ anime.duration/60 | number:'1.0-0' }}h</div>
+            <div *ngIf="anime.duration/60 < 1">Ep: {{ anime.duration }}min</div>
+          </div>
+          <div *ngIf="anime.episodes && anime.duration">
+            <hr *ngIf="anime.duration && anime.episodes" class="bg-white"/>
+            <div *ngIf="(anime.duration*anime.episodes)/60 >= 1">T &cong; {{ (anime.duration*anime.episodes)/60 | number:'1.0-0' }}h</div>
+            <div *ngIf="(anime.duration*anime.episodes)/60 < 1">T < 1h</div>
+          </div>
+        </div>
+        <i *ngIf="!anime.duration" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
+      </td>
+      <td>
+        <div *ngFor="let genre of anime.genres">{{ genre }}</div>
+        <i *ngIf="anime.genres.length == 0" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
+      </td>
+      <td><a href="{{ anime.siteUrl }}"><i class="fa fa-external-link-square fa-2x text-primary" aria-hidden="true"></i></a></td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+      <tr>
+        <th>
+          <button *ngIf="page.pageInfo.currentPage > 1" (click)="turnPage(page.pageInfo.currentPage-1)">
+            <i class="fa fa-arrow-left fa-2x text-light"></i>
+          </button>
+        </th>
+        <th colspan="6">
+          <span *ngIf="page.pageInfo.lastPage > 1">
+            <input type="number" step="1" min="1" max="{{ page.pageInfo.lastPage }}" value="{{ page.pageInfo.currentPage }}" (change)="($event.target.value <= page.pageInfo.lastPage) ? turnPage($event.target.value) : turnPage(page.pageInfo.lastPage);" class="text-center"/> / {{ page.pageInfo.lastPage }}
+          </span>
+        </th>
+        <th>
+          <button *ngIf="page.pageInfo.currentPage < page.pageInfo.lastPage" (click)="turnPage(page.pageInfo.currentPage+1)">
+            <i class="fa fa-arrow-right fa-2x text-light"></i>
+          </button>
+        </th>
+      </tr>
+  </tfoot>
+</table>
+
+<ng-template #loading>
+  <div id="loading" class="row">
+    <img class="mx-auto" src="assets/loading.svg" alt="loading..." />
+  </div>
+</ng-template>
+
+<ng-template #no_result>
+  <tbody>
+    <tr id="no_result" class="text-center text-uppercase">
+      <td colspan="8"><i class="fa fa-times text-danger"></i> No result</td>
+    </tr>
+  </tbody>
+</ng-template>

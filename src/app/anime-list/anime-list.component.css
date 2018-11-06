@@ -1,0 +1,10 @@
+td, th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+thead, tfoot, button { background-color: #212121; }
+
+button { border: none; }
+
+#loading { margin: 25% 0; }

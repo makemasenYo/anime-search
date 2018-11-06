@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+* { 
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; 
+}
+
+body { width: 100%; }
+
+header, footer { background-color: #212121; }
+
+

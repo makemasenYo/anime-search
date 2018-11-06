@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mt-2">
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="toggleNavbar()">
+    <i class="fa fa-cogs text-white fa-2x"></i>
+  </button>
+
+  <div class="navbar-collapse" [ngClass]="{'collapse': navbarCollapsed}">
+    <ul class="navbar-nav my-2 text-light text-uppercase">
+
+      <li class="nav-item mb-1 col-12 col-md col-xl">
+        <label for="sort">Sort by:</label>
+        <select class="custom-select" (change)="updateSort($event.target.value)" id="sort">
+          <option *ngFor="let sort of sortSelect" [value]="sort" [selected]="isSortSelected(sort)">
+              <span *ngIf="isSortDown(sort)">{{ sort | slice:0:-5 }} &uarr;</span>
+              <span *ngIf="!isSortDown(sort)">{{ sort }} &darr;</span>
+          </option>
+        </select>
+      </li>
+
+      <li class="nav-item mb-1 col-12 col-md col-xl">
+        <label for="sort">Season:</label>
+        <select class="custom-select" (change)="updateSeason($event.target.value)">
+          <option *ngFor="let season of seasonSelect" [value]="season" [selected]="this.sortOptions.season === season">{{ season }}</option>
+        </select>
+      </li>
+
+      <li class="nav-item mb-1 col-12 col-md col-xl">
+        <label for="sort">Status:</label>
+        <select class="custom-select" (change)="updateStatus($event.target.value)">
+          <option *ngFor="let status of statusSelect" [value]="status" [selected]="isStatusSelected(status)">{{ status }}</option>
+        </select>
+      </li>
+
+      <li class="nav-item mb-1 col-12 col-md col-xl">
+        <label for="sort">Year:</label>
+        <select class="custom-select" (change)="updateYear($event.target.value)">
+          <option *ngFor="let year of getYears()" [value]="year" [selected]="this.sortOptions.year === year">{{ year }}</option>
+        </select>
+      </li>
+
+      <li class="nav-item col-12 col-md col-xl">
+        <label for="sort">Per Page:</label>
+        <select class="custom-select" (change)="updatePerPage($event.target.value)">
+          <option *ngFor="let perPage of perPageSelect" [value]="perPage" [selected]="this.sortOptions.perPage === perPage">{{ perPage }}</option>
+        </select>
+      </li>
+
+    </ul>
+  </div>
+</nav>
