@@ -4,6 +4,7 @@ export default interface Anime {
         romaji: string,
         english: string
     };
+    format: string,
     startDate: {
         year: number,
         month: number,

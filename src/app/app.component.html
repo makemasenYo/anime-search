@@ -1,22 +1,22 @@
-<div class="fluid-container">
-    <header class="row">
-        <as-mainbar class="col-12"></as-mainbar>
-    </header>
-
+<main class="fluid-container">
     <div class="row">
-        <div id="left-border" class="col-md col-xl-2"></div>
+        <header class="col-12 border-bottom border-white">
+            <as-mainbar></as-mainbar>
+        </header>
 
-        <main class="col-md-12 col-xl-8 border-left border-right border-white">
+        <div id="left-border" class="col-xl"></div>
+
+        <section class="col-md-12 col-xl-8 border-left border-right border-white">
             <as-anime-list></as-anime-list>
-        </main>
+        </section>
 
-        <div id="right-border" class="col-md col-xl-2"></div>
+        <div id="right-border" class="col-xl"></div>
+
+        <footer class="col-12 border-top border-white text-white">
+            <div class="my-2 text-center">
+                <div>Powered by <a href="https://angular.io">Angular</a> & <a href="https://github.com/AniList/ApiV2-GraphQL-Docs">Anilist API</a></div>
+                <div>© 2018 makemasen_yo</div>
+            </div>
+        </footer>
     </div>
-
-    <footer class="row border-top border-white text-white">
-        <div class="col-12 my-2 text-center">
-            <div>Powered by <a href="https://angular.io">Angular</a> & <a href="https://github.com/AniList/ApiV2-GraphQL-Docs">Anilist API</a></div>
-            <div>© 2018 makemasen_yo</div>
-        </div>
-    </footer>
-</div>
+</main>
