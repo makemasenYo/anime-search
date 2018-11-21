@@ -1,17 +1,21 @@
 <nav class="navbar row">
   <a href="/" class="navbar-brand text-white mx-4 my-1 text-uppercase">Anime search</a>
 
-  <input #searchInput type="text" class="form-control col-4 col-sm-2 mx-4" placeholder="search anime..." (keyup)="search($event.target.value)">
+  <input #searchInput type="text" class="form-control col-4 col-sm-3 col-xl-2 mx-4" placeholder="search anime..." (keyup)="search($event.target.value)">
 </nav>
 
-<div *ngIf="searchPage$ | async as page" [ngClass]="{'d-block': page.media.length > 0}" class="d-none border-top border-white text-light">
-  <ul class="col-md-12 col-xl-6 mx-auto">
-    <li *ngFor="let anime of page.media | keyvalue" class="my-2 text-uppercase">
-      <a href="{{ anime.value.siteUrl }}" class="row">
-        <img src="{{ anime.value.coverImage.medium }}"/>
-        <div class="ml-2 my-auto col">{{ anime.value.title.romaji }} - {{ anime.value.format }}</div> 
-      </a>
-      <hr *ngIf="anime.key < (page.media.length - 1)" class="col-8 bg-light"/>
-    </li>
-  </ul>
+<div *ngIf="searchPage$ | async as page" [ngClass]="{ 'd-block': page.media.length > 0 }" class="d-none row border-top border-white text-light">
+  <div class="col-12">
+    <ul class="row px-0 justify-content-center my-2">
+      <li *ngFor="let anime of page.media | keyvalue" class="col-md-2 mx-2 my-2 my-md-0 text-uppercase">
+        <a href="{{ anime.value.siteUrl }}" class="d-flex flex-row flex-md-column justify-content-md-around align-items-center">
+          <div><img src="{{ anime.value.coverImage.medium }}"/></div>
+          <div class="mx-2 mx-md-0 text-left text-md-center">
+            <div>{{ anime.value.title.romaji }}</div>
+            <div class="font-italic">( {{ anime.value.format.replace('_', ' ') }} )</div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

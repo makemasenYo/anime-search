@@ -37,13 +37,12 @@
         <span *ngIf="anime.endDate.day && anime.endDate.month">/</span>
         <span *ngIf="anime.endDate.month">{{ anime.endDate.month | number: '2.' }}</span>
         <span *ngIf="anime.endDate.month && this.currentSortOptions.year !== anime.endDate.year">/</span>
-        <span *ngIf="anime.endDate.year && this.currentSortOptions.year !== anime.endDate.year">{{ anime.endDate.year }}</span>
-        <i *ngIf="!anime.endDate.year" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
+        <span *ngIf="anime.endDate.year && this.currentSortOptions.year !== anime.endDate.year && anime.endDate.year > 1989">{{ anime.endDate.year }}</span>
+        <i *ngIf="!anime.endDate.year || anime.endDate.year <= 1989" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
       </td>
       <td>
-        <div *ngIf="anime.nextAiringEpisode && this.currentSortOptions.status === 'RELEASING'">Last: {{ anime.nextAiringEpisode.episode }}</div>
-        <hr *ngIf="anime.nextAiringEpisode && this.currentSortOptions.status === 'RELEASING'" class="bg-white"/>
-        <div *ngIf="anime.episodes">T: {{ anime.episodes }}</div>
+        <span *ngIf="anime.nextAiringEpisode && this.currentSortOptions.status === 'RELEASING'">{{ anime.nextAiringEpisode.episode }} / </span>
+        <span *ngIf="anime.episodes">{{ anime.episodes }}</span>
         <i *ngIf="!anime.episodes" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
       </td>
       <td>

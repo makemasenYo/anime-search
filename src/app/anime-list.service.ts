@@ -42,6 +42,7 @@ const pageQuery = gql`
         }
         duration
         coverImage {
+          large
           medium
         }
         genres

@@ -17,9 +17,7 @@ export class MainbarComponent implements OnInit {
 
   constructor(private animeListService: AnimeListService) { }
 
-  search(term: string): void { this.searchTerms.next(term);
-  console.log(this.searchTerms);
-   }
+  search(term: string): void { this.searchTerms.next(term); }
 
   ngOnInit(): void {
     this.searchPage$ = this.searchTerms.pipe(
@@ -27,7 +25,6 @@ export class MainbarComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => this.animeListService.search(term))
     );
-    this.searchPage$.subscribe(data => console.log(data.media));
   }
 
   isSearching(): boolean { return (this.searchTerms) ? true : false; }
