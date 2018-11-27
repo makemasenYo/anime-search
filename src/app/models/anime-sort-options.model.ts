@@ -21,14 +21,16 @@ export class AnimeSortOptions {
     perPage: number;
 
     constructor() {
-        const date = new Date();
-
         this.sort = 'POPULARITY_DESC';
         this.season = null;
-        this.year = date.getFullYear();
+        this.year = this.currentYear();
         this.status = 'RELEASING';
               
         this.page = 1;
         this.perPage = perPageList[0];
+    }
+
+    currentYear() {
+        return (new Date()).getFullYear();
     }
 }

@@ -1,7 +1,7 @@
 <nav class="navbar row">
   <a href="/" class="navbar-brand text-white mx-4 my-1 text-uppercase">Anime search</a>
 
-  <input #searchInput type="text" class="form-control col-4 col-sm-3 col-xl-2 mx-4" placeholder="search anime..." (keyup)="search($event.target.value)">
+  <input type="text" class="form-control col-4 col-sm-3 col-xl-2 mx-4" placeholder="search anime..." (keyup)="search($event.target.value)">
 </nav>
 
 <div *ngIf="searchPage$ | async as page" [ngClass]="{ 'd-block': page.media.length > 0 }" class="d-none row border-top border-white text-light">

@@ -46,6 +46,10 @@ const pageQuery = gql`
           medium
         }
         genres
+        trailer {
+          id
+          site
+        }
         siteUrl
       }
     }

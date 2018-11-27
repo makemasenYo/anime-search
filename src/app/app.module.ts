@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { SortbarComponent } from './sortbar/sortbar.component';
 import { AnimeListComponent } from './anime-list/anime-list.component';
 import { MainbarComponent } from './mainbar/mainbar.component';
+import { AnimeDetailComponent } from './anime-detail/anime-detail.component';
+import { AnimeDetailDateComponent } from './anime-detail-date/anime-detail-date.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SortbarComponent,
     AnimeListComponent,
-    MainbarComponent
+    MainbarComponent,
+    AnimeDetailComponent,
+    AnimeDetailDateComponent
   ],
   imports: [
     BrowserModule,

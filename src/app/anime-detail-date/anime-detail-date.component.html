@@ -1,0 +1,6 @@
+<span *ngIf="date.day">{{ date.day | number: '2.' }}</span>
+<span *ngIf="date.day && date.month">/</span>
+<span *ngIf="date.month">{{ date.month | number: '2.' }}</span>
+<span *ngIf="date.month && currentYear !== date.year">/</span>
+<span *ngIf="date.year && currentYear !== date.year">{{ date.year }}</span>
+<i *ngIf="!date.year" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>

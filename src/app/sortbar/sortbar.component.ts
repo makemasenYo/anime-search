@@ -35,9 +35,9 @@ export class SortbarComponent implements OnInit {
 
   isSortDown(sort: string): boolean { return sort.endsWith('DESC') ? true : false; }
 
-  isSortSelected(sort: string) { return this.sortOptions.sort === sort.replace(new RegExp(/ /, 'g'), '_') ? true : false; }
+  isSortSelected(sort: string): boolean { return this.sortOptions.sort === sort.replace(new RegExp(/ /, 'g'), '_') ? true : false; }
 
-  isStatusSelected(status: string) { return this.sortOptions.status === status.replace(new RegExp(/ /, 'g'), '_') ? true : false; }
+  isStatusSelected(status: string): boolean { return this.sortOptions.status === status.replace(new RegExp(/ /, 'g'), '_') ? true : false; }
 
   getYears(): Array<number> {
     const thisYear = (new Date()).getFullYear();

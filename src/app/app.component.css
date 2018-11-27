@@ -1,3 +1,7 @@
 #left-border { background: url("../assets/gears.png") left top fixed; }
 
 #right-border { background: url("../assets/gears2.png") right top fixed; }
+
+a {
+    text-decoration: none;
+}

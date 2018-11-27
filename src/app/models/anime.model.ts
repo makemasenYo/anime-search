@@ -1,3 +1,5 @@
+import AnimeDate from "./anime-date.model";
+
 export default interface Anime {
     id: number;
     title: {
@@ -5,16 +7,8 @@ export default interface Anime {
         english: string
     };
     format: string,
-    startDate: {
-        year: number,
-        month: number,
-        day: number
-    };
-    endDate: {
-        year: number,
-        month: number,
-        day: number
-    };
+    startDate: AnimeDate;
+    endDate: AnimeDate;
     nextAiringEpisode?: {
         episode: number
     };
@@ -25,5 +19,9 @@ export default interface Anime {
         medium: string
     };
     genres: string[];
+    trailer: {
+        id: string,
+        site: string
+    };
     siteUrl: string;
 }

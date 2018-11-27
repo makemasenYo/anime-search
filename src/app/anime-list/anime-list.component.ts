@@ -14,10 +14,14 @@ import { Observable } from 'rxjs';
 export class AnimeListComponent implements OnInit {
   currentPage$: Observable<Page>;
   currentSortOptions: AnimeSortOptions;
+  trailerId: string;
 
   constructor(private animeListService: AnimeListService) { }
 
-  ngOnInit() { this.currentSortOptions = new AnimeSortOptions(); }
+  ngOnInit() { 
+    this.currentSortOptions = new AnimeSortOptions();
+    this.trailerId = null;
+  }
 
   updatePage(options?: AnimeSortOptions): void {
     if(options) {
