@@ -32,6 +32,6 @@
   <i *ngIf="anime.genres.length == 0" class="fa fa-question fa-2x text-light" aria-hidden="true"></i>
 </td>
 <td>
-  <div *ngIf="anime.trailer != null" class="mb-2"><a href="https://www.youtube.com/watch?v={{ anime.trailer.id }}" target="_blank"><i class="fa fa-play fa-2x text-success"></i></a></div>
+  <div *ngIf="anime.trailer && anime.trailer.site == 'youtube'" class="mb-2"><a href="https://www.youtube.com/watch?v={{ anime.trailer.id }}" target="_blank"><i class="fa fa-youtube fa-2x text-danger"></i></a></div>
   <div><a href="{{ anime.siteUrl }}" target="_blank"><i class="fa fa-external-link fa-2x text-primary"></i></a></div>
 </td>
