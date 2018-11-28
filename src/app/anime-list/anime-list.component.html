@@ -15,7 +15,7 @@
   </thead>
 
   <tbody *ngIf="page.media.length > 0; else no_result;" class="text-light">
-    <tr *ngFor="let anime of page.media" as-anime-detail [anime]="anime" [currentYear]="this.currentSortOptions.currentYear()" [status]="this.currentSortOptions.status"></tr>
+    <tr *ngFor="let anime of page.media" as-anime-detail [anime]="anime" [status]="this.currentSortOptions.status"></tr>
   </tbody>
 
   <tfoot>

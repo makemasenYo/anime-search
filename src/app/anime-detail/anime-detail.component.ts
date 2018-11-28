@@ -9,7 +9,6 @@ import Anime from '../models/anime.model';
 })
 export class AnimeDetailComponent implements OnInit {
   @Input() anime: Anime;
-  @Input() currentYear: number;
   @Input() status: string;
 
   constructor() { }

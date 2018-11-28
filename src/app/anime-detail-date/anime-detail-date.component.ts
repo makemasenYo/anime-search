@@ -8,9 +8,9 @@ import AnimeDate from '../models/anime-date.model';
 })
 export class AnimeDetailDateComponent implements OnInit {
   @Input() date: AnimeDate;
-  @Input() currentYear: number;
+  currentYear: number;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { this.currentYear = (new Date()).getFullYear(); }
 }
