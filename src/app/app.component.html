@@ -1,22 +1,20 @@
-<main class="fluid-container">
-    <div class="row">
-        <header class="col-12 border-bottom border-white">
-            <as-mainbar></as-mainbar>
-        </header>
+<header class="row border-bottom border-white">
+    <as-mainbar class="col-12"></as-mainbar>
+</header>
+    
+<main class="row">
+    <div id="left-border" class="col-xl"></div>
 
-        <div id="left-border" class="col-xl"></div>
+    <section class="col-md-12 col-xl-8 border-left border-right border-white">
+        <as-anime-list></as-anime-list>
+    </section>
 
-        <section class="col-md-12 col-xl-8 border-left border-right border-white">
-            <as-anime-list></as-anime-list>
-        </section>
-
-        <div id="right-border" class="col-xl"></div>
-
-        <footer class="col-12 border-top border-white text-white">
-            <div class="my-4 text-center">
-                <div>Powered by <a href="https://angular.io" target="_blank">Angular</a> & <a href="https://github.com/AniList/ApiV2-GraphQL-Docs" target="_blank">Anilist API</a></div>
-                <div>© 2018 <a href="https://github.com/makemasenYo/anime-search" target="_blank" class="text-white">makemasen_yo <i class="fa fa-github"></i></a></div>
-            </div>
-        </footer>
-    </div>
+    <div id="right-border" class="col-xl"></div>
 </main>
+
+<footer class="row border-top border-white text-white">
+    <div class="col-12 my-4 text-center">
+        <div>Powered by <a href="https://angular.io" target="_blank">Angular</a> & <a href="https://github.com/AniList/ApiV2-GraphQL-Docs" target="_blank">Anilist API</a></div>
+        <div>&copy; 2018 <a href="https://github.com/makemasenYo/anime-search" target="_blank" class="text-white">makemasen_yo <i class="fa fa-github"></i></a></div>
+    </div>
+</footer>

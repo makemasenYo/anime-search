@@ -2,6 +2,12 @@
 
 #right-border { background: url("../assets/gears2.png") right top fixed; }
 
-a {
-    text-decoration: none;
-}
+a { text-decoration: none; }
+
+main { min-height: 82%; }
+
+header { min-height: 6%; }
+
+footer { min-height: 12%; }
+
+header, footer { background-color: #212121; }
