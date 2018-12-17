@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AnimeListService } from '../anime-list.service';
+import { AnimeListService } from '../services/anime-list.service';
 import Page from '../models/page.model';
 import { AnimeSortOptions } from '../models/anime-sort-options.model';
 
@@ -24,12 +24,12 @@ export class AnimeListComponent implements OnInit {
       this.currentSortOptions = options;
       this.currentSortOptions.page = 1;
     }
-      
-    this.currentPage$ = this.animeListService.page(this.currentSortOptions); 
+
+    this.currentPage$ = this.animeListService.page(this.currentSortOptions);
   }
 
   turnPage(nextPage: number): void {
     this.currentSortOptions.page = nextPage;
-    this.updatePage(); 
+    this.updatePage();
   }
 }

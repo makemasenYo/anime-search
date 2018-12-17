@@ -7,9 +7,9 @@ import { ApolloQueryResult } from 'apollo-client';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import Page from "./models/page.model";
-import { AnimeSortOptions } from './models/anime-sort-options.model';
-import Query from './models/query.model';
+import Page from "../models/page.model";
+import { AnimeSortOptions } from '../models/anime-sort-options.model';
+import Query from '../models/query.model';
 
 const pageQuery = gql`
   query($sort: [MediaSort], $season: MediaSeason, $year: Int, $status: MediaStatus, $page: Int, $perPage: Int, $search: String) {

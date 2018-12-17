@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 
 import Page from '../models/page.model';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { AnimeListService } from '../anime-list.service';
+import { AnimeListService } from '../services/anime-list.service';
 
 @Component({
   selector: 'as-mainbar',

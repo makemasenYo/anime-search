@@ -1,0 +1,5 @@
+a { text-decoration: none; }
+
+div:first-of-type {
+    font-size: 2rem;
+}

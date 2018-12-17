@@ -1,3 +1,9 @@
+<h1 class="text-uppercase text-center text-white my-2">
+  {{ this.currentSortOptions.season }} <span *ngIf="!this.currentSortOptions.season">ALL</span>
+  {{ currentSortOptions.status }}
+  {{ this.currentSortOptions.year }} list
+</h1>
+
 <as-sortbar (currentSortOptions)="updatePage($event)"></as-sortbar>
 
 <table *ngIf="currentPage$ | async as page; else loading;" class="table table-responsive-md table-dark table-striped text-white my-2">
