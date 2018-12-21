@@ -27,7 +27,7 @@ const pageQuery = gql`
         format
         status
         startDate {
-          year 
+          year
           month
           day
         }
@@ -61,22 +61,32 @@ const pageQuery = gql`
 export class AnimeListService {
   constructor(private apollo: Apollo) { }
 
-  private get(query: Query): Observable<ApolloQueryResult<Object>> { 
+  private get(query: Query): Observable<ApolloQueryResult<Object>> {
     return this.apollo.watchQuery(query).valueChanges;
   }
 
   page(options: AnimeSortOptions): Observable<Page> {
+    let variables = ( options.season ) ? {
+      sort: options.sort,
+      season: options.season,
+      year: options.year,
+      status: options.status,
+
+      page: options.page,
+      perPage: options.perPage
+    } : {
+      sort: options.sort,
+      year: options.year,
+      status: options.status,
+
+      page: options.page,
+      perPage: options.perPage
+    }
+    ;
+
     return this.get({
       query: pageQuery,
-      variables: {
-        sort: options.sort,
-        season: options.season,
-        year: options.year,
-        status: options.status,
-
-        page: options.page,
-        perPage: options.perPage
-      }
+      variables: variables
     }).pipe(
       map((res: Object) => res["data"]["Page"]),
       map((page: Page) => page)
