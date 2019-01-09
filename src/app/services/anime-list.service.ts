@@ -66,23 +66,21 @@ export class AnimeListService {
   }
 
   page(options: AnimeSortOptions): Observable<Page> {
-    let variables = ( options.season ) ? {
+    let variables : AnimeSortOptions = {
       sort: options.sort,
-      season: options.season,
-      year: options.year,
       status: options.status,
 
       page: options.page,
       perPage: options.perPage
-    } : {
-      sort: options.sort,
-      year: options.year,
-      status: options.status,
+    };
 
-      page: options.page,
-      perPage: options.perPage
+    if(options.season) {
+      variables.season = options.season;
     }
-    ;
+
+    if(options.year > 0) {
+      variables.year = options.year;
+    }
 
     return this.get({
       query: pageQuery,

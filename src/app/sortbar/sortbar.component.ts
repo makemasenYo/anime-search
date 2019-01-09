@@ -12,7 +12,7 @@ export class SortbarComponent implements OnInit {
   seasonSelect: Array<string>;
   statusSelect: Array<string>;
   perPageSelect: Array<number>;
-  
+
   sortOptions: AnimeSortOptions;
   @Output() currentSortOptions = new EventEmitter<AnimeSortOptions>();
 
@@ -20,14 +20,14 @@ export class SortbarComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.sortSelect = sortList.map(sort => sort.replace(new RegExp(/_/, 'g'), ' '));
     this.seasonSelect = seasonList;
     this.statusSelect = statusList.map(sort => sort.replace(new RegExp(/_/, 'g'), ' '));
     this.perPageSelect = perPageList;
-    
+
     this.sortOptions = new AnimeSortOptions();
- 
+
     this.currentSortOptions.emit(this.sortOptions);
 
     this.navbarCollapsed = true;
@@ -41,7 +41,7 @@ export class SortbarComponent implements OnInit {
 
   getYears(): Array<number> {
     const thisYear = (new Date()).getFullYear();
-    const years: Array<number> = [thisYear+1];
+    const years: Array<number> = [null, thisYear+1];
 
     for(let i: number = thisYear; i >= 1990; i--)
       years.push(i);
@@ -65,7 +65,7 @@ export class SortbarComponent implements OnInit {
   }
 
   updateYear(year: number): void { 
-    this.sortOptions.year = year;
+    this.sortOptions.year = (year == null) ? 0 : year;
     this.currentSortOptions.emit(this.sortOptions); 
   }
 

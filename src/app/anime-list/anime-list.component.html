@@ -1,7 +1,7 @@
 <h1 class="text-uppercase text-center text-white my-2">
   {{ this.currentSortOptions.season }} <span *ngIf="!this.currentSortOptions.season">ALL</span>
   {{ currentSortOptions.status }}
-  {{ this.currentSortOptions.year }} list
+  <span *ngIf="!this.currentSortOptions.year">{{ this.currentSortOptions.year }}</span> list
 </h1>
 
 <as-sortbar (currentSortOptions)="updatePage($event)"></as-sortbar>

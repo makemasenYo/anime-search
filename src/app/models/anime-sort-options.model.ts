@@ -1,4 +1,4 @@
-export const sortList: string[] = [ 
+export const sortList: string[] = [
     'POPULARITY', 'POPULARITY_DESC',
     'TITLE_ROMAJI', 'TITLE_ROMAJI_DESC',
     'TITLE_ENGLISH', 'TITLE_ENGLISH_DESC',
@@ -13,8 +13,8 @@ export const perPageList: number[] = [10, 20, 30, 40, 50];
 
 export class AnimeSortOptions {
     sort: string;
-    season: string;
-    year: number;
+    season?: string;
+    year?: number;
     status: string;
 
     page: number;
@@ -23,9 +23,9 @@ export class AnimeSortOptions {
     constructor() {
         this.sort = 'POPULARITY_DESC';
         this.season = null;
-        this.year = (new Date()).getFullYear();
+        this.year = null;
         this.status = 'RELEASING';
-              
+
         this.page = 1;
         this.perPage = perPageList[0];
     }

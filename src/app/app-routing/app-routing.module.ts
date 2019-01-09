@@ -5,8 +5,8 @@ import { AnimeListComponent } from '../anime-list/anime-list.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'seasons', component: AnimeListComponent },
-  { path: '', redirectTo: '/seasons', pathMatch: 'full' },
+  { path: '', component: AnimeListComponent, pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
