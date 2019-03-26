@@ -19,7 +19,9 @@ You generate differents modules needed to launch the application with this comma
 
 ``` npm install ```
 
+For test it locally, you write this command:
 
+``` ng serve --open ```
 
 ## Built With
 
@@ -30,7 +32,3 @@ You generate differents modules needed to launch the application with this comma
 ## Author
 
 makemasenYo
-
-## License
-
-This project is licensed under the ISC License.
